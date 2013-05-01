@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="MessAdmin_WebApp">
+	<display-name>MessAdmin (Java EE 1.3)</display-name>
+	<description>Example application for MessAdmin</description>
+	<distributable/>
+
+	<context-param>
+		<!-- Note: this context-param is NOT part of MessAdmin! It is here for demonstration purposes only! -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext*.xml,classpath*:/META-INF/spring/*.xml</param-value>
+		<!--description>Context Configuration locations for Spring XML files</description-->
+	</context-param>
+	<context-param>
+		<!-- Note: this context-param is NOT part of MessAdmin! It is here for demonstration purposes only! -->
+		<param-name>numberGuess.maxNumber</param-name>
+		<param-value>10</param-value>
+		<!--description>Maximum number to guess</description-->
+	</context-param>
+
+	<filter>
+		<!-- MessAdmin Servlet Filter -->
+		<filter-name>MessAdminFilter</filter-name>
+		<!--description>Allows injection of code into http response, and more</description-->
+		<filter-class>clime.messadmin.filter.MessAdminFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MessAdminFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<!--dispatcher>REQUEST</dispatcher-->
+		<!--dispatcher>FORWARD</dispatcher-->
+		<!--dispatcher>INCLUDE</dispatcher-->
+		<!--dispatcher>ERROR</dispatcher-->
+	</filter-mapping>
+
+	<listener>
+		<!-- MessAdmin listener -->
+		<listener-class>clime.messadmin.core.MessAdminListener</listener-class>
+	</listener>
+
+	<servlet>
+		<!-- MessAdmin Servlet -->
+		<servlet-name>MessAdminServlet</servlet-name>
+		<!--display-name>AdminMessageInjectorServlet</display-name-->
+		<!--description><![CDATA[Injects a message into every active sessions]]></description-->
+		<servlet-class>clime.messadmin.admin.MessAdminServlet</servlet-class>
+		<init-param>
+			<param-name>AuthorizationPassword</param-name>
+			<param-value>ma</param-value>
+		</init-param>
+		<init-param>
+			<param-name>StaticFilesRoot</param-name>
+			<param-value>/MessAdmin/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>WebFilesRoot</param-name>
+			<param-value>/MessAdmin/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ServerInfosJsp</param-name>
+			<param-value>serverInfos.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>WebAppsListJsp</param-name>
+			<param-value>webAppsList.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>WebAppStatsJsp</param-name>
+			<param-value>webAppStats.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>SessionsListJsp</param-name>
+			<param-value>sessionsList.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>SessionDetailJsp</param-name>
+			<param-value>sessionDetail.jsp</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>numberGuessServlet</servlet-name>
+		<servlet-class>clime.messadmin.example.NumberGuessServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>clime.messadmin.example.SampleServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testJSP</servlet-name>
+		<servlet-class>clime.messadmin.example.SampleJSP</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MessAdminServlet</servlet-name>
+		<url-pattern>/messadmin</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>numberGuessServlet</servlet-name>
+		<url-pattern>/numberGuess</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testJSP</servlet-name>
+		<url-pattern>/include/test</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testJSP</servlet-name>
+		<url-pattern>/forward/test</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<env-entry>
+		<!-- Note: this JNDI entry is NOT part of MessAdmin! It is here for demonstration purposes only! -->
+		<description>Test JNDI entry</description>
+		<env-entry-name>test/minAmount</env-entry-name>
+		<env-entry-value>100.00</env-entry-value>
+		<env-entry-type>java.lang.Double</env-entry-type>
+	</env-entry>
+</web-app>

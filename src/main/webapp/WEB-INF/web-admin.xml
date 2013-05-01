@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="MessAdmin_WebApp">
+	<display-name>MessAdmin</display-name>
+	<description>Administration application for MessAdmin library</description>
+	<distributable/>
+
+	<servlet>
+		<!-- MessAdmin Servlet -->
+		<servlet-name>MessAdminServlet</servlet-name>
+		<servlet-class>clime.messadmin.admin.MessAdminServlet</servlet-class>
+		<!-- Uncomment if you want to password-protect access to the administration servlet
+		<init-param>
+			<param-name>AuthorizationPassword</param-name>
+			<param-value>[SomePassword]</param-value>
+		</init-param>
+		-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MessAdminServlet</servlet-name>
+		<url-pattern>/messadmin</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index-admin.html</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index-admin.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- We need those for server-level installation -->
+	<taglib>
+		<taglib-uri>http://messadmin.sf.net/core</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/taglib-core.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://messadmin.sf.net/fmt</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/taglib-fmt.tld</taglib-location>
+	</taglib>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>MessAdmin</web-resource-name>
+			<url-pattern>/messadmin</url-pattern>
+		</web-resource-collection>
+		<!--auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint-->
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee><!-- NONE | INTEGRAL | CONFIDENTIAL -->
+		</user-data-constraint>
+	</security-constraint>
+	<!--security-role>
+		<role-name>admin</role-name>
+	</security-role-->
+</web-app>
