@@ -3,9 +3,6 @@
 	<name>MessAdmin-AdminWebApp</name>
 	<comment></comment>
 	<projects>
-		<project>MessAdmin-ClickStream</project>
-		<project>MessAdmin-Core</project>
-		<project>MessAdmin-ServletStats</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
