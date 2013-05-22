@@ -66,7 +66,7 @@
 	//]]>
 	</script>
 </head>
-<body>
+<body><% response.flushBuffer(); %>
 
 <div id="menu">
 <jsp:include page="inc/menuTools.jsp"/>
