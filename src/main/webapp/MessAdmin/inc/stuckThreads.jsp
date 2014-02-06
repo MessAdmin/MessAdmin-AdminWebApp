@@ -1,10 +1,9 @@
-<%@page session="false" %>
-<%@page import="clime.messadmin.utils.JMX"%>
-<%@taglib prefix="core" uri="http://messadmin.sf.net/core" %>
-<%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %>
-<format:setBundle basename="clime.messadmin.providers.userdata.ThreadsDumper"/>
-
-<%
+<%@page session="false" %><%
+%><%@page import="clime.messadmin.utils.JMX"%><%
+%><%@taglib prefix="core" uri="http://messadmin.sf.net/core" %><%
+%><%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %><%
+%><format:setBundle basename="clime.messadmin.providers.userdata.ThreadsDumper"/><%
+%><%
 	long[] deadlockedThreadsIDs = JMX.findDeadlockedThreadsIDs();
 	if (deadlockedThreadsIDs != null && deadlockedThreadsIDs.length > 0) {
 %>

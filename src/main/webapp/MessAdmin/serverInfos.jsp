@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<%@page session="false" contentType="text/html; charset=UTF-8" %>
-<%@page import="clime.messadmin.model.IServerInfo" %>
-<%@page import="clime.messadmin.model.DisplayDataHolder"%>
-<%@page import="clime.messadmin.admin.AdminActionProvider"%>
-<%@page import="clime.messadmin.admin.actions.WebAppsList"%>
-<%@page import="clime.messadmin.admin.actions.ReloadServerDataProvider"%>
-<%@page import="clime.messadmin.admin.actions.ReloadDataProviderHelper"%>
-<%@page import="clime.messadmin.utils.Files"%>
-<%@page import="clime.messadmin.utils.JMX"%>
-<%@taglib prefix="core" uri="http://messadmin.sf.net/core" %>
-<%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %>
+<?xml version="1.0" encoding="UTF-8"?><%
+%><%@page session="false" contentType="text/html; charset=UTF-8" %><%
+%><%@page import="clime.messadmin.core.Constants"%><%
+%><%@page import="clime.messadmin.model.IServerInfo" %><%
+%><%@page import="clime.messadmin.model.DisplayDataHolder"%><%
+%><%@page import="clime.messadmin.admin.AdminActionProvider"%><%
+%><%@page import="clime.messadmin.admin.actions.WebAppsList"%><%
+%><%@page import="clime.messadmin.admin.actions.ReloadServerDataProvider"%><%
+%><%@page import="clime.messadmin.admin.actions.ReloadDataProviderHelper"%><%
+%><%@page import="clime.messadmin.utils.Files"%><%
+%><%@page import="clime.messadmin.utils.JMX"%><%
+%><%@taglib prefix="core" uri="http://messadmin.sf.net/core" %><%
+%><%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %>
 <%--!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"--%>
 <%--!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"--%>
 <!DOCTYPE html 
@@ -56,6 +57,8 @@
 <h1><format:message key="page.title"><format:param value="<%= serverInfos.getServerName() %>"/></format:message></h1>
 
 <jsp:include page="inc/stuckThreads.jsp"/>
+<jsp:include page="inc/systemLoad.jsp"/>
+<jsp:include page="inc/diskSpace.jsp"/>
 
 <fieldset>
 	<legend><span class="collapsible" id="serverInfo"><format:message key="serverInfo.legend"/></span></legend>

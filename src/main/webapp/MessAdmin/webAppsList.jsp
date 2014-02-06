@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<%@page session="false" contentType="text/html; charset=UTF-8" %>
-<%@page import="java.util.Collection" %>
-<%@page import="clime.messadmin.admin.AdminActionProvider"%>
-<%@page import="clime.messadmin.admin.BaseAdminActionWithContext"%>
-<%@page import="clime.messadmin.admin.actions.ServerInfos"%>
-<%@page import="clime.messadmin.admin.actions.WebAppStats"%>
-<%@page import="clime.messadmin.admin.actions.SessionsList"%>
-<%@page import="clime.messadmin.model.IApplicationInfo" %>
-<%@page import="clime.messadmin.model.ApplicationInfo"%>
-<%@page import="clime.messadmin.core.Constants" %>
-<%@taglib prefix="core" uri="http://messadmin.sf.net/core" %>
-<%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %>
+<?xml version="1.0" encoding="UTF-8"?><%
+%><%@page session="false" contentType="text/html; charset=UTF-8" %><%
+%><%@page import="java.util.Collection" %><%
+%><%@page import="clime.messadmin.admin.AdminActionProvider"%><%
+%><%@page import="clime.messadmin.admin.BaseAdminActionWithContext"%><%
+%><%@page import="clime.messadmin.admin.actions.ServerInfos"%><%
+%><%@page import="clime.messadmin.admin.actions.WebAppStats"%><%
+%><%@page import="clime.messadmin.admin.actions.SessionsList"%><%
+%><%@page import="clime.messadmin.model.IApplicationInfo" %><%
+%><%@page import="clime.messadmin.model.ApplicationInfo"%><%
+%><%@page import="clime.messadmin.core.Constants" %><%
+%><%@taglib prefix="core" uri="http://messadmin.sf.net/core" %><%
+%><%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %>
 <%--!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"--%>
 <%--!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"--%>
 <!DOCTYPE html 
@@ -65,6 +65,8 @@
 <h1><format:message key="page.title"/></h1>
 
 <jsp:include page="inc/stuckThreads.jsp"/>
+<jsp:include page="inc/systemLoad.jsp"/>
+<jsp:include page="inc/diskSpace.jsp"/>
 
 <div class="error"><core:out value='<%= request.getAttribute("error") %>'/></div>
 <div class="message"><core:out value='<%= request.getAttribute("message") %>'/></div>
