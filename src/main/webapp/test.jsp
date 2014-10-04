@@ -20,7 +20,7 @@
 	<meta http-equiv="expires" content="0" /><!-- 0 is an invalid value and should be treated as 'now' -->
 	<meta http-equiv="content-language" content="en" /><%-- fr_FR --%>
 	<meta name="author" content="Cedrik LIME" />
-	<meta name="copyright" content="copyright 2005--2013 Cedrik LIME" />
+	<meta name="copyright" content="copyright 2005--2015 Cedrik LIME" />
 	<meta name="robots" content="noindex,nofollow,noarchive" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
 	<meta name="format-detection" content="telephone=no"/>

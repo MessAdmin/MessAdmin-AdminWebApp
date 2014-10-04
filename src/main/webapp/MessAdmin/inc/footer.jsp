@@ -20,7 +20,7 @@
 
 <div class="copyright" style="font-size: xx-small; font-weight: lighter; color: gray;">
 <br />
-<a href="http://messadmin.sourceforge.net" target="_new">MessAdmin</a> <core:out value="<%= MessAdmin.getVersion() %>"/> &copy; 2005&ndash;2013 C&eacute;drik LIME, <format:message key="copyright.rights"/>
+<a href="http://messadmin.sourceforge.net" target="_new">MessAdmin</a> <core:out value="<%= MessAdmin.getVersion() %>"/> &copy; 2005&ndash;2015 C&eacute;drik LIME, <format:message key="copyright.rights"/>
 </div>
 
 <div id="ajaxLoadingDiv" style="display: none;"><format:message key="ajax.loading"/></div>
