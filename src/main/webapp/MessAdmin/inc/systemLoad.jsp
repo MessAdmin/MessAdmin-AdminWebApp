@@ -4,7 +4,7 @@
 %><%@taglib prefix="format" uri="http://messadmin.sf.net/fmt" %><%
 %><format:setBundle basename="clime.messadmin.admin.i18n.alerts"/><%
 %><%
-	if (JMX.getSystemLoadAverage() > 1.1 * Runtime.getRuntime().availableProcessors()) {//FIXME magic number
+	if (JMX.getSystemLoadAverage() > 1.2 * Runtime.getRuntime().availableProcessors()) {//FIXME magic number
 %>
 	<div style="font-size: larger; font-weight: bolder; color: red;">
 		<format:message key="alert.systemLoad">

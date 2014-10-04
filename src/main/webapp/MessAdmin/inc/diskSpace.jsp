@@ -12,7 +12,7 @@
 		long space = Files.getUsableSpaceForFile(fs);
 		double percent = Files.getUsableSpacePercentForFile(fs);
 		return space > 0 && percent >= 0
-				&& (space < 1*1024*1024*1024 || percent < 0.01);//FIXME magic numbers
+				&& (space < 1*1024*1024*1024 || percent < 0.02);//FIXME magic numbers
 	}
 %><%
 	File tmpDir = new File(System.getProperty("java.io.tmpdir"));
