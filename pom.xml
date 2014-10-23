@@ -37,6 +37,36 @@
 			<artifactId>jsp-api</artifactId>
 		</dependency>
 		<!-- Run-time dependencies -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>MessAdmin-ClickStream</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>MessAdmin-DiskBrowser</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>MessAdmin-ServletStats</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>MessAdmin-SessionKiller</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>MessAdmin-SizeOf</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 		<!-- Test-time dependencies -->
 	</dependencies>
 
@@ -46,29 +76,79 @@
 
 	<packaging>war</packaging>
 
-	<!--build>
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
+				<configuration><!-- common configuration -->
+					<includeEmptyDirectories>true</includeEmptyDirectories>
 					<webXml>${maven.war.webxml}</webXml>
-					<webResources>
-						<resource>
-							<!- - this is relative to the pom.xml directory - ->
-							<directory>resource2</directory>
-							<targetPath>WEB-INF</targetPath><!- - By default web resources are copied to the root of the war - ->
-						</resource>
-					</webResources>
-					<warSourceExcludes>
-					</warSourceExcludes>
-					<archiver>
-						<manifest_entry>value</manifest_entry>
-					</archiver>
+					<filteringDeploymentDescriptors>false</filteringDeploymentDescriptors>
 					<archive>
+						<compress>true</compress>
 						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifestEntries>
+							<!--manifest_entry>value</manifest_entry-->
+						</manifestEntries>
 					</archive>
+					<warSourceExcludes>**/.gitignore,**/.empty,**/.emptydir</warSourceExcludes>
 				</configuration>
+				<executions>
+					<execution>
+						<id>admin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+						<inherited>true</inherited>
+						<configuration>
+							<warName>MessAdmin</warName>
+							<webXml>src/main/webapp/WEB-INF/web-admin.xml</webXml>
+							<packagingExcludes>**/.gitignore,**/.empty,**/.emptydir,index.html,*.jsp,WEB-INF/web*.xml,WEB-INF/classes/**,WEB-INF/lib/**</packagingExcludes>
+							<webResources>
+								<resource>
+									<directory>src/main/webapp</directory><!-- relative to the pom.xml directory -->
+									<targetPath></targetPath><!-- By default web resources are copied to the root of the war -->
+									<includes>
+										<include>index-admin.html</include>
+									</includes>
+								</resource>
+								<resource>
+									<!-- Copy TLDs in /META-INF/resources/ for some Servlet containers -->
+									<targetPath>WEB-INF/tlds/</targetPath>
+									<directory>../MessAdmin-Core/src/main/resources/META-INF</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>*.tld</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>demo</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+						<inherited>true</inherited>
+						<configuration>
+							<warName>demo</warName>
+							<webXml>src/main/webapp/WEB-INF/web-demo.xml</webXml>
+							<packagingExcludes>**/.gitignore,**/.empty,**/.emptydir,index-admin.html,WEB-INF/web*.xml</packagingExcludes>
+							<webResources>
+								<resource>
+									<directory>src/main/webapp</directory><!-- relative to the pom.xml directory -->
+									<targetPath></targetPath><!-- By default web resources are copied to the root of the war -->
+									<includes>
+										<include>index.html</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
-	</build-->
+	</build>
 </project>

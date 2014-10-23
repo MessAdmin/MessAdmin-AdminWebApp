@@ -23,12 +23,12 @@
 		<mkdir dir="${war.demo.build.dir}"/>
 		<javac srcdir="${war.demo.src.dir}"
 			destdir="${war.demo.build.dir}"
-			classpath="../MessAdmin-Core/lib/servlet23-tomcat41.jar;../MessAdmin-Core/${dist.dir}/MessAdmin-Core-${version}.jar"
+			classpath="../lib/servlet-api-2.4.jar;../MessAdmin-Core/${dist.dir}/MessAdmin-Core-${version}.jar"
 			debug="on"
 			optimize="off"
 			encoding="ISO-8859-15"
-			source="1.4"
-			target="1.4"
+			source="1.5"
+			target="1.5"
 			failonerror="true"
 			includeantruntime="false"
 		/>
@@ -58,12 +58,12 @@
 		<!--mkdir dir="${war.admin.build.dir}"/>
 		<javac srcdir="${war.admin.src.dir}"
 			destdir="${war.admin.build.dir}"
-			classpath="lib/servlet23-tomcat41.jar;../MessAdmin-Core/${dist.dir}/MessAdmin-Core-${version}.jar"
+			classpath="lib/servlet-api-2.4.jar;../MessAdmin-Core/${dist.dir}/MessAdmin-Core-${version}.jar"
 			debug="on"
 			optimize="off"
 			encoding="ISO-8859-15"
-			source="1.4"
-			target="1.4"
+			source="1.5"
+			target="1.5"
 			failonerror="true"
 			includeantruntime="false"
 		/-->
